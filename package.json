@@ -9,7 +9,8 @@
     "lint": "tslint -c tslint.json -e 'node_modules/**/*' '**/*.ts'",
     "prepack": "npm run build",
     "start": "node ./lib/index.js",
-    "test": "NODE_ENV=test nyc mocha --require source-map-support/register --require ts-node/register --recursive './src/**/*.tests.ts'"
+    "test": "NODE_ENV=test nyc mocha --require source-map-support/register --require ts-node/register --recursive './src/**/*.tests.ts'",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
