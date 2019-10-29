@@ -1,16 +1,45 @@
 # ts-registry-express
 
-Base project for creating a console application in Typescript
+Custom [`ts-registry`](https://github.com/ChristianAlexander/ts-registry) scope provider for [Express](https://expressjs.com/) requests.
 
-## How to:
+## Quick Start
 
-### Run this project
+```Typescript
+import * as express from 'express';
+import { Registry } from 'ts-registry';
+import { middleware, request } from 'ts-registry-express';
 
-1.  Build the code: `npm run build`
-1.  Run it! `npm start`
+// define a request-scoped service
+const registry = new Registry();
+registry
+  .for('my-service')
+  .withScope(request)
+  .use(() => new MyService())
 
-### Create and run tests
+// use the middleware
+const app = express();
+app.use(middleware);
 
-1.  Add tests by creating files with the `.tests.ts` suffix
-1.  Run the tests: `npm t`
-1.  Test coverage can be viewed at `/coverage/lcov-report/index.html`
+// get an instance of the service
+app.get('/', (req, res) => {
+  // service instance is unique to this request
+  const service = registry.getService('my-service');
+})
+```
+
+## Access to the current Request
+
+The target scope for this `ScopeProvider` is the current `Request` object and can be accessed via the second parameter of the service initializer.
+
+Example:
+
+```Typescript
+registry
+  .for('my-service')
+  .withScope(request)
+  .use((_get, req) => new MyService(req.session))
+```
+
+Because service instantiation is deferred, request-scoped service initializers can be defined outside of standard Express middleware, routers, or other handlers. However, when the `registry.get()` is called during a request (even if the call is made from another another function or module) the service initializer is passed the instance of the current request as the second argument.
+
+Note that if you hold onto a reference of `req` within either the service intializer or other code, it will not be garbage collected and will lead to a memory leak.
