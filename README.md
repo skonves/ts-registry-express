@@ -1,4 +1,5 @@
 [![travis](https://img.shields.io/travis/skonves/ts-registry-express.svg)](https://travis-ci.org/skonves/ts-registry-express)
+[![coveralls](https://img.shields.io/coveralls/skonves/ts-registry-express.svg)](https://coveralls.io/github/skonves/ts-registry-express)
 [![NPM Version](https://img.shields.io/npm/v/ts-registry-express.svg)](https://npmjs.com/package/ts-registry-express)
 
 # ts-registry-express
