@@ -34,6 +34,7 @@
     "@types/node": "^12.11.7",
     "@types/supertest": "^2.0.8",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.7",
     "express": "^4.17.1",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
