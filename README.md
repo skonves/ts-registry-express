@@ -1,3 +1,6 @@
+[![travis](https://img.shields.io/travis/skonves/ts-registry-express.svg)](https://travis-ci.org/skonves/ts-registry-express)
+[![NPM Version](https://img.shields.io/npm/v/ts-registry-express.svg)](https://npmjs.com/package/ts-registry-express)
+
 # ts-registry-express
 
 Custom [`ts-registry`](https://github.com/ChristianAlexander/ts-registry) scope provider for [Express](https://expressjs.com/) requests.
