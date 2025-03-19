@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import * as express from 'express';
 import * as test from 'supertest';
 import { Registry } from 'ts-registry';
@@ -37,7 +36,7 @@ describe('registry ScopeProvider', () => {
     const result = await test(app).get('/');
 
     // ASSERT
-    expect(result.body.n1).to.equal(result.body.n2);
+    expect(result.body.n1).toEqual(result.body.n2);
   });
 
   it('returns different instances of a service during multiple concerent requests', async () => {
@@ -71,9 +70,9 @@ describe('registry ScopeProvider', () => {
     const [result1, result2] = await Promise.all([sut.get('/'), sut.get('/')]);
 
     // ASSERT
-    expect(result1.body.n1).to.equal(result1.body.n2);
-    expect(result2.body.n1).to.equal(result2.body.n2);
-    expect(result1.body.n1).to.not.equal(result2.body.n1);
-    expect(result1.body.n2).to.not.equal(result2.body.n2);
+    expect(result1.body.n1).toEqual(result1.body.n2);
+    expect(result2.body.n1).toEqual(result2.body.n2);
+    expect(result1.body.n1).not.toEqual(result2.body.n1);
+    expect(result1.body.n2).not.toEqual(result2.body.n2);
   });
 });
