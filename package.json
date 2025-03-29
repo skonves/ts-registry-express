@@ -43,6 +43,6 @@
     "ts-registry": "^1.0.4"
   },
   "dependencies": {
-    "express-http-context": "^2.0.0-rc.0"
+    "express-http-context": "^2.0.0-rc.2"
   }
 }
