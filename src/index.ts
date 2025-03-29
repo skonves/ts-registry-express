@@ -3,10 +3,12 @@ import { type ScopeProvider, singleton } from 'ts-registry';
 
 import * as httpContext from 'express-http-context';
 
+const key = 'express_req';
+
 export const request: ScopeProvider<Request> = {
-  getTargetScope: () => httpContext.get('express_req'),
+  getTargetScope: () => httpContext.get(key),
   sourceScopeGetters: [
-    () => httpContext.get('express_req'),
+    () => httpContext.get(key),
     ...singleton.sourceScopeGetters,
   ],
 };
@@ -14,7 +16,7 @@ export const request: ScopeProvider<Request> = {
 export const middleware: RequestHandler[] = [
   httpContext.middleware,
   (req, _, next) => {
-    httpContext.set('express_req', req);
+    httpContext.set(key, req);
     next();
   },
 ];
