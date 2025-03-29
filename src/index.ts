@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
-import { ScopeProvider, singleton } from 'ts-registry';
+import type { RequestHandler } from 'express';
+import { type ScopeProvider, singleton } from 'ts-registry';
 
 import * as httpContext from 'express-http-context';
 
@@ -11,9 +11,9 @@ export const request: ScopeProvider<Request> = {
   ],
 };
 
-export const middleware = [
+export const middleware: RequestHandler[] = [
   httpContext.middleware,
-  (req: Request, _res: Response, next: NextFunction) => {
+  (req, _, next) => {
     httpContext.set('express_req', req);
     next();
   },
