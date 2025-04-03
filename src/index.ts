@@ -1,4 +1,4 @@
-import type { RequestHandler } from 'express';
+import type { Request, RequestHandler } from 'express';
 import { type ScopeProvider, singleton } from 'ts-registry';
 
 import * as httpContext from 'express-http-context';
