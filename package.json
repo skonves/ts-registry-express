@@ -1,6 +1,6 @@
 {
   "name": "ts-registry-express",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ExpressJS request-scope provider for ts-registry",
   "main": "./lib/index.js",
   "scripts": {
