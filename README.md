@@ -44,7 +44,7 @@ registry
   .use((_get, req) => new MyService(req.session))
 ```
 
-Because service instantiation is deferred, request-scoped service initializers can be defined outside of standard Express middleware, routers, or other handlers. However, when the `registry.get()` is called during a request (even if the call is made from another another function or module) the service initializer is passed the instance of the current request as the second argument.
+Because service instantiation is deferred, request-scoped service initializers can be defined outside of standard Express middleware, routers, or other handlers. However, when the `registry.get()` is called during a request (even if the call is made from another function or module) the service initializer is passed the instance of the current request as the second argument.
 
 Note that if you hold onto a reference of `req` within either the service intializer or other code, it will not be garbage collected and will lead to a memory leak.
 
